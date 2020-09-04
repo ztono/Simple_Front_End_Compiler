@@ -1,7 +1,7 @@
 package main;
 
-import lexer.Lexer;
-import parser.Parser;
+import c.lexer.Lexer;
+import c.parser.Parser;
 
 import java.io.*;
 
@@ -13,21 +13,21 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        if(args.length >= 2){
-            try{
-                FileInputStream fis=new FileInputStream(args[0]);
-                System.setIn(fis);}
-            catch (FileNotFoundException e){
-                e.printStackTrace();
-            }
+//        if(args.length >= 2){
+//            try{
+//                FileInputStream fis=new FileInputStream(args[0]);
+//                System.setIn(fis);}
+//            catch (FileNotFoundException e){
+//                e.printStackTrace();
+//            }
+//
+//            PrintStream ps=new PrintStream(new FileOutputStream(args[1]));
+//            System.setOut(ps);
+//
+//        }
 
-            PrintStream ps=new PrintStream(new FileOutputStream(args[1]));
-            System.setOut(ps);
 
-        }
-
-
-        Lexer lex = new Lexer();
+        Lexer lex = new Lexer("in.c");
         Parser parse = new Parser(lex);
         parse.program();
         System.out.write('\n');
